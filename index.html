@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Survive the Meme - Download</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('9d5dfcec8e9ac17bfabb8bdbca1aa64e.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 60px;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    button {
+      background-color: crimson;
+      border: none;
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #b30033;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px crimson;
+    }
+
+    .credit {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .modal video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <h1>Survive the Meme</h1>
+    <p>A horror game like no other. Can you survive her?</p>
+    <button id="trailerBtn">Watch Trailer</button>
+    <button id="downloadBtn">Download</button>
+    <div class="credit">Created by BeastBoyGana</div>
+  </div>
+
+  <!-- Modal -->
+  <div id="trailerModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <video id="trailerVideo" controls>
+        <source src="your-trailer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    const downloadBtn = document.getElementById("downloadBtn");
+    const trailerBtn = document.getElementById("trailerBtn");
+    const modal = document.getElementById("trailerModal");
+    const closeBtn = document.querySelector(".close");
+    const trailerVideo = document.getElementById("trailerVideo");
+
+    downloadBtn.addEventListener("click", function () {
+      window.open("https://drive.google.com/file/d/1-CfNhXpMvnVabevVhklOQ6nQE28PFvak/view?usp=sharing", "_blank");
+    });
+
+    trailerBtn.addEventListener("click", function () {
+      modal.style.display = "flex";
+      trailerVideo.play();
+    });
+
+    closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+      trailerVideo.pause();
+      trailerVideo.currentTime = 0;
+    });
+
+    window.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        trailerVideo.pause();
+        trailerVideo.currentTime = 0;
+      }
+    });
+  </script>
+
+</body>
+</html>
